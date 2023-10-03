@@ -1,0 +1,11 @@
+.elem{
+    border: 1px solid black;
+    width: 2%;
+    height: 5%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+p{
+    text-align: center;
+}

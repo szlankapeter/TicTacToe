@@ -1,0 +1,1 @@
+export let lista = ["x", "o"];
