@@ -18,21 +18,27 @@ class Model {
             this.#allapot = "X";
         }
         this.#lista[index] = this.#allapot;
-        console.log(this.#lista)
     }
 
     getAllapot() {
         return this.#allapot;
     }
 
+    kov(){
+        if (this.#allapot === 'X') {
+            return 'O';
+        }
+        return 'X';
+    }
+
     vegeVanE() {
-        let eredmeny = this.#vizszintesEll();
+        let eredmeny = this.#vizszintesEll() + "@" + this.#fuggolegesEll() + "@" + this.#atloEll();
         if (eredmeny.indexOf("XXX") > -1) {
-           $("body").html("X nyert");
+            return "X nyert";
         } else if (eredmeny.indexOf("OOO") > -1) {
-            $("body").html("O nyert");
+            return "O nyert";
         } else if (this.#lepes >= 9) {
-            $("body").html("Vége");
+            return "döntetlen";
         }
         return "nincs Vége";
     }
@@ -46,6 +52,27 @@ class Model {
             }
         }
         return vText;
+    }
+
+    #fuggolegesEll() {
+        let ellY = "";
+        for (let i = 0; i < 3; i++) {
+            ellY +=
+                this.#lista[i] +
+                this.#lista[i + 3] +
+                this.#lista[i + 6];
+
+            ellY += "@";
+        }
+
+        return ellY;
+    }
+
+    #atloEll() {
+        let ell = this.#lista[0] + this.#lista[4] + this.#lista[8] + "@";
+        ell += this.#lista[2] + this.#lista[4] + this.#lista[6];
+
+        return ell;
     }
 
 } export default Model
